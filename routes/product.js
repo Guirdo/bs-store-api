@@ -28,4 +28,18 @@ router.get('/category/:category', async(req,res,next) => {
     }
 })
 
+/* GET Search product */
+router.get('/search/:input', async(req,res,next) => {
+    console.log(req.params.input)
+    try{
+        res.status(200).json(await product.searchProduct(req.params.input))
+    }catch(err){
+        res.status(418).send({
+            message: "Something went wrong"
+        })
+        console.log('Error while getting Product',err.toString())
+        next(err)
+    }
+})
+
 module.exports = router

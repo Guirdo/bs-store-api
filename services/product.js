@@ -9,7 +9,6 @@ const getAllProduct = async() => {
 }
 
 const getProductByCategory = async(id) => {
-    console.log(id)
     const rows = await db.query(`
         SELECT * FROM product WHERE category = ${id}
     `)
@@ -17,7 +16,16 @@ const getProductByCategory = async(id) => {
     return rows
 }
 
+const searchProduct = async(input) => {
+    const rows = await db.query(`
+        SELECT * FROM product where name like '${input}%'
+    `)
+
+    return rows
+}
+
 module.exports = {
     getAllProduct,
-    getProductByCategory
+    getProductByCategory,
+    searchProduct
 }
