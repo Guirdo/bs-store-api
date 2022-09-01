@@ -9,6 +9,4 @@ const config = {
     }
 }
 
-console.log(config.db)
-
 module.exports = config
