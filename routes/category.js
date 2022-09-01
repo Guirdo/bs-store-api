@@ -15,4 +15,16 @@ router.get('/', async(req,res,next) => {
     }
 })
 
+router.get('/:id', async(req,res,next) => {
+    try{
+        res.status(200).json(await category.getCategory(req.params.id))
+    }catch(err){
+        res.status(418).send({
+            message: "Something went wrong"
+        })
+        console.log('Error while getting Category',err.toString())
+        next(err)
+    }
+})
+
 module.exports = router

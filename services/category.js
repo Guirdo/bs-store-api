@@ -8,6 +8,15 @@ const getCategories = async() => {
     return rows
 }
 
+const getCategory = async(id) => {
+    const rows = await db.query(`
+        SELECT name FROM category where id = ${id}
+    `)
+
+    return rows
+}
+
 module.exports = {
-    getCategories
+    getCategories,
+    getCategory
 }
