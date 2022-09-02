@@ -1,5 +1,7 @@
 # BS Store API
 
+![bs-store-api](https://socialify.git.ci/Guirdo/bs-store-api/image?font=Raleway&language=1&name=1&owner=1&pattern=Circuit%20Board&theme=Light)
+
 ## Indice
 - [Resumen](#resumen)
 - [Instalacion](#instalacion)
@@ -13,10 +15,14 @@
     - [GET todos los productos](#get-todos-los-productos)
     - [GET obtener productos por categoria](#get-obtener-productos-por-categoria)
     - [GET buscar producto](#get-buscar-producto)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Resumen
 
 Esta API fue realizada para la prueba técnica de BSale para el puesto de Desarrollador de software.
+
+En esta API se trabajan con las entidades Product y Category para realizar el filtrado y envio de datos para la aplicación front-end.
 
 ## Instalacion
 
@@ -181,3 +187,10 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
     }
 ]
 ```
+## Licencia
+
+> Este proyecto tiene una licencia MIT
+
+## Autor
+
+Hecho con :heart: por [Guirdo](https://github.com/Guirdo)
