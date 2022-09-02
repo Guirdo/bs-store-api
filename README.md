@@ -20,11 +20,11 @@ Esta API fue realizada para la prueba técnica de BSale para el puesto de Desarr
 ## Instalacion
 
 1. Clona este respositorio
-``` 
+``` bash
 git clone https://github.com/Guirdo/bs-store-api.git
 ```
 2. Ejecuta el siguiente comando para instalar las dependencias
-``` 
+``` bash
 npm install
 ```
 3. Antes de ejecutar por primera vez el servidor, asegurate de crear un archivo ```.env``` con los siguientes campos:
@@ -35,7 +35,7 @@ DB_PASSWORD=db-password
 DB_NAME=db-name
 ```
 4. Corre el siguiente comando
-```
+```bash
 npm run start
 ```
 
@@ -71,7 +71,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 - No tiene
 
 **Respuesta**
-```
+```json
 [
     {"id":1,"name":"bebida energetica"},
     {"id":2,"name":"pisco"},
@@ -95,7 +95,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 - ```/category/2```
 
 **Respuesta**
-```
+```json
 [{"name":"pisco"}]
 ```
 
@@ -111,7 +111,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 - ```/product```
 
 **Respuesta**
-```
+```json
 [
     {
         "id":5,
@@ -136,7 +136,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 - ```/product/category/3```
 
 **Respuesta**
-```
+```json
 [
     {
         "id":23,
@@ -163,7 +163,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 
 **Respuesta**
 
-```
+```json
 [
     {
         "id":104,
