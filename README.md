@@ -3,6 +3,7 @@
 ## Indice
 - [Resumen](#resumen)
 - [Instalacion](#instalacion)
+- [Stack](#stack)
 - [Entidades](#entidades)
     - [Product](#product)
     - [Category](#category)
@@ -38,6 +39,11 @@ DB_NAME=db-name
 ```bash
 npm run start
 ```
+
+## Stack
+Estas son las tecnologias ocupadas para el desarrollo de la API
+- NodeJS
+- Express
 
 ## Entidades
 
