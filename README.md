@@ -2,12 +2,22 @@
 
 ## Indice
 - [Resumen](#resumen)
+- [Instalacion](#instalacion)
+- [Entidades](#entidades)
+    - [Product](#product)
+    - [Category](#category)
+- [Endpoints](#endpoints)
+    - [GET lista de categorias](#get-lista-de-categorias)
+    - [GET una categoria](#get-una-categoria)
+    - [GET todos los productos](#get-todos-los-productos)
+    - [GET obtener productos por categoria](#get-obtener-productos-por-categoria)
+    - [GET buscar producto](#get-buscar-producto)
 
 ## Resumen
 
 Esta API fue realizada para la prueba técnica de BSale para el puesto de Desarrollador de software.
 
-## Instalación
+## Instalacion
 
 1. Clona este respositorio
 ``` 
@@ -62,7 +72,15 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 
 **Respuesta**
 ```
-[{"id":1,"name":"bebida energetica"},{"id":2,"name":"pisco"},{"id":3,"name":"ron"},{"id":4,"name":"bebida"},{"id":5,"name":"snack"},{"id":6,"name":"cerveza"},{"id":7,"name":"vodka"}]
+[
+    {"id":1,"name":"bebida energetica"},
+    {"id":2,"name":"pisco"},
+    {"id":3,"name":"ron"},
+    {"id":4,"name":"bebida"},
+    {"id":5,"name":"snack"},
+    {"id":6,"name":"cerveza"},
+    {"id":7,"name":"vodka"}
+]
 ```
 
 ### GET una categoria
@@ -79,4 +97,81 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 **Respuesta**
 ```
 [{"name":"pisco"}]
+```
+
+### GET todos los productos
+- ```/product``` retornará todos los productos disponibles
+
+**Parametros**
+
+- No tiene
+
+**Ejemplo**
+
+- ```/product```
+
+**Respuesta**
+```
+[
+    {
+        "id":5,
+        "name":"ENERGETICA MR BIG",
+        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
+        "price":1490,
+        "discount":20,
+        "category":1
+    },
+    ...
+]
+```
+
+### GET obtener productos por categoria
+
+- ```/product/category/:category ``` retornará los productos según la categoria
+
+**Parametros**
+- *category*: Identificador único de la categoria
+
+**Ejemplo**
+- ```/product/category/3```
+
+**Respuesta**
+```
+[
+    {
+        "id":23,
+        "name":"RON BACARDI AÑEJO",
+        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/bacardi9450.jpg",
+        "price":4990,
+        "discount":0,
+        "category":3
+    },
+    ...
+]
+```
+
+### GET Buscar producto
+
+- ```/product/search/:input``` retornará los productos que coincidan (puede ser parcialmente) con el ```input```
+
+**Parametros**
+- *input*: termino de busqueda
+
+**Ejemplo**
+
+- ```/product/search/a```
+
+**Respuesta**
+
+```
+[
+    {
+        "id":104,
+        "name":"ABSOLUT",
+        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/absolut21381.png",
+        "price":8990,
+        "discount":30,
+        "category":7
+    }
+]
 ```
