@@ -6,6 +6,7 @@
 - [Resumen](#resumen)
 - [Instalacion](#instalacion)
 - [Stack](#stack)
+- [Estructura del proyecto](#estructura-del-proyecto)
 - [Entidades](#entidades)
     - [Product](#product)
     - [Category](#category)
@@ -50,6 +51,14 @@ npm run start
 Estas son las tecnologias ocupadas para el desarrollo de la API
 - NodeJS
 - Express
+
+## Estructura del proyecto
+
+- ```routes/```: Enrutadores para cada endpoint
+- ```services/```: Métodos que realizan las consultas y el control de errores para los enrutadores.
+- ```config.js```: Configuración para la conexión de la base de datos
+- ```vercel.json```: Archivo de configuración para el host de la API
+- ```index.js```: Programa principal de la API.
 
 ## Entidades
 
