@@ -3,6 +3,7 @@ const app = express();
 const mysql = require('mysql2')
 const categoryRouter = require('./routes/category')
 const productRouter = require('./routes/product')
+const config = require('./config')
 require('dotenv').config()
 
 const port = process.env.PORT || 3000;
@@ -23,11 +24,7 @@ app.use(function (req, res, next) {
 });
 
 const pool = mysql
- .createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  connectionLimit: 10,
- })
+ .createPool(config.db)
   .promise();
 
 app.get("/", (req, res) => {

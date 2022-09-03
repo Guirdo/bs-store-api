@@ -21,9 +21,9 @@ router.get('/category/:category', async(req,res,next) => {
         res.status(200).json(await product.getProductByCategory(req.params.category))
     }catch(err){
         res.status(418).send({
-            message: "Something went wrong"
+            message: err.toString()
         })
-        console.log('Error while getting Product',err.toString())
+        //console.log('Error while getting Product',err.toString())
         next(err)
     }
 })
