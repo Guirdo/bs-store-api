@@ -8,7 +8,7 @@ router.get('/', async(req,res,next) => {
         res.status(200).json(await category.getCategories())
     }catch(err){
         res.status(418).send({
-            message: "Something went wrong"
+            message: err.toString()
         })
         console.log('Error while getting Category',err.toString())
         next(err)
@@ -20,7 +20,7 @@ router.get('/:id', async(req,res,next) => {
         res.status(200).json(await category.getCategory(req.params.id))
     }catch(err){
         res.status(418).send({
-            message: "Something went wrong"
+            message: err.toString()
         })
         console.log('Error while getting Category',err.toString())
         next(err)

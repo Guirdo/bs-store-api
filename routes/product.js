@@ -8,7 +8,7 @@ router.get('/', async(req,res,next) => {
         res.status(200).json(await product.getAllProduct())
     }catch(err){
         res.status(418).send({
-            message: "Something went wrong"
+            message: err.toString()
         })
         console.log('Error while getting Product',err.toString())
         next(err)
@@ -23,7 +23,7 @@ router.get('/category/:category', async(req,res,next) => {
         res.status(418).send({
             message: err.toString()
         })
-        //console.log('Error while getting Product',err.toString())
+        console.log('Error while getting Product',err.toString())
         next(err)
     }
 })
@@ -35,7 +35,7 @@ router.get('/search/:input', async(req,res,next) => {
         res.status(200).json(await product.searchProduct(req.params.input))
     }catch(err){
         res.status(418).send({
-            message: "Something went wrong"
+            message: err.toString()
         })
         console.log('Error while getting Product',err.toString())
         next(err)
