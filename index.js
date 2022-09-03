@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const mysql = require('mysql2')
 const categoryRouter = require('./routes/category')
 const productRouter = require('./routes/product')
 require('dotenv').config()
@@ -20,6 +21,14 @@ app.use(function (req, res, next) {
 
   next();
 });
+
+const pool = mysql
+ .createPool({
+  host: 'localhost',
+  user: 'root',
+  connectionLimit: 10,
+ })
+  .promise();
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello world!" });
