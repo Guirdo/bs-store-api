@@ -18,7 +18,7 @@ const getProductByCategory = async(id) => {
 
 const searchProduct = async(input) => {
     const rows = await db.query(`
-        SELECT * FROM product where name like '${input}%'
+        SELECT * FROM product where name like '%${input}%'
     `)
 
     return rows
