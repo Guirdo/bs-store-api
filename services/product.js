@@ -17,9 +17,18 @@ const getProductByCategory = async (id) => {
 }
 
 const searchProduct = async (input) => {
-    const rows = await db.query(`
-    SELECT * FROM product where name like '${input}%'
-`)
+    let words = input.split(' ')
+    let rows
+    
+    if (words.length > 1) {
+        rows = await db.query(`
+            SELECT * FROM product where name like '%${input}%'
+        `)
+    } else{
+        rows = await db.query(`
+            SELECT * FROM product where name like '${input}%'
+        `)
+    }
 
     return rows
 }
