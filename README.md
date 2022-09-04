@@ -14,7 +14,7 @@
     - [GET lista de categorias](#get-lista-de-categorias)
     - [GET una categoria](#get-una-categoria)
     - [GET todos los productos](#get-todos-los-productos)
-    - [GET obtener productos por categoria](#get-obtener-productos-por-categoria)
+    - [GET obtener productos por categoría](#get-obtener-productos-por-categoria)
     - [GET buscar producto](#get-buscar-producto)
 - [Licencia](#licencia)
 - [Autor](#autor)
@@ -23,11 +23,11 @@
 
 Esta API fue realizada para la prueba técnica de BSale para el puesto de Desarrollador de software.
 
-En esta API se trabajan con las entidades Product y Category para realizar el filtrado y envio de datos para la aplicación front-end.
+En esta API se trabaja con las entidades Product y Category para realizar el filtrado y envío de datos para la aplicación front-end.
 
 ## Instalacion
 
-1. Clona este respositorio
+1. Clona este repositorio
 ``` bash
 git clone https://github.com/Guirdo/bs-store-api.git
 ```
@@ -48,7 +48,7 @@ npm run start
 ```
 
 ## Stack
-Estas son las tecnologias ocupadas para el desarrollo de la API
+Estas son las tecnologías ocupadas para el desarrollo de la API
 - NodeJS
 - Express
 
@@ -62,7 +62,7 @@ Estas son las tecnologias ocupadas para el desarrollo de la API
 
 ## Entidades
 
-Para esta API se trabajo con dos tablas de la base de datos proporcionada por BSale.
+Para esta API se trabajó con dos tablas de la base de datos proporcionada por BSale.
 
 ### Product
 
@@ -79,7 +79,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 
 | Campo | Descripción  |
 |---|---|
-|id|Identificador único de la categoria (int)|
+|id|Identificador único de la categoría (int)|
 |name|Nombre de la categoria (varchar)|
 
 ## Endpoints
@@ -105,11 +105,11 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 ```
 
 ### GET una categoria
-- ```/category/:id``` retornará la categoria que corresponda al ```id```
+- ```/category/:id``` retornará la categoría que corresponda al ```id```
 
 **Parametros**
 
-- *id*: identificador único de la categoria
+- *id*: identificador único de la categoría
 
 **Ejemplo**
 
@@ -146,12 +146,12 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 ]
 ```
 
-### GET obtener productos por categoria
+### GET obtener productos por categoría
 
-- ```/product/category/:category ``` retornará los productos según la categoria
+- ```/product/category/:category ``` retornará los productos según la categoría
 
 **Parametros**
-- *category*: Identificador único de la categoria
+- *category*: Identificador único de la categoría
 
 **Ejemplo**
 - ```/product/category/3```
@@ -176,7 +176,7 @@ Para esta API se trabajo con dos tablas de la base de datos proporcionada por BS
 - ```/product/search/:input``` retornará los productos que coincidan (puede ser parcialmente) con el ```input```
 
 **Parametros**
-- *input*: termino de busqueda
+- *input*: término de búsqueda
 
 **Ejemplo**
 

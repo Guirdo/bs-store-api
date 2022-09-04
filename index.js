@@ -27,8 +27,6 @@ const pool = mysql
  .createPool(config.db)
   .promise();
 
-console.log(pool.getConnection())
-
 app.get("/", (req, res) => {
   res.json({ message: "Hello world!" });
 });
