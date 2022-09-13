@@ -57,6 +57,7 @@ Estas son las tecnologías ocupadas para el desarrollo de la API
 - ```routes/```: Enrutadores para cada endpoint
 - ```services/```: Métodos que realizan las consultas y el control de errores para los enrutadores.
 - ```config.js```: Configuración para la conexión de la base de datos
+- ```helper.js```: Funciones utiles para el sistema
 - ```vercel.json```: Archivo de configuración para el host de la API
 - ```index.js```: Programa principal de la API.
 
@@ -85,7 +86,7 @@ Para esta API se trabajó con dos tablas de la base de datos proporcionada por B
 ## Endpoints
 
 ### GET lista de categorias
-- ```/category``` retornará todas las categorias
+- ```/category/page``` retornará todas las categorias
 
 **Parametros**
 
@@ -121,80 +122,113 @@ Para esta API se trabajó con dos tablas de la base de datos proporcionada por B
 ```
 
 ### GET todos los productos
-- ```/product``` retornará todos los productos disponibles
+- ```/product/:page``` retornará todos los productos disponibles.
+
+Si el campo *page* se deja vacio mostrara la primera pagina de resultados.
 
 **Parametros**
 
-- No tiene
+- *page*: Numero de la pagina de resultados (opcional)
 
 **Ejemplo**
 
 - ```/product```
+- ```/product/2```
 
 **Respuesta**
 ```json
-[
-    {
-        "id":5,
-        "name":"ENERGETICA MR BIG",
-        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
-        "price":1490,
-        "discount":20,
-        "category":1
+{
+    pagination: {
+        totalOfItems: 57,
+        limitPerPage: 10,
+        currentPage: 2,
+        numberOfPages: 6
     },
-    ...
-]
+    products:[
+        {
+            "id":5,
+            "name":"ENERGETICA MR BIG",
+            "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg",
+            "price":1490,
+            "discount":20,
+            "category":1
+        },
+        ...
+    ]
+}
 ```
 
 ### GET obtener productos por categoría
 
-- ```/product/category/:category ``` retornará los productos según la categoría
+- ```/product/category/:category/:page ``` retornará los productos según la categoría.
+
+Si el campo *page* se deja vacio mostrara la primera pagina de resultados.
 
 **Parametros**
 - *category*: Identificador único de la categoría
+- *page*: Numero de la pagina de resultados (opcional)
 
 **Ejemplo**
-- ```/product/category/3```
+- ```/product/category/3/2```
 
 **Respuesta**
 ```json
-[
-    {
-        "id":23,
-        "name":"RON BACARDI AÑEJO",
-        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/bacardi9450.jpg",
-        "price":4990,
-        "discount":0,
-        "category":3
+{
+    pagination: {
+        totalOfItems: 13,
+        limitPerPage: 10,
+        currentPage: 2,
+        numberOfPages: 2
     },
+    products: [
+        {
+            "id":23,
+            "name":"RON BACARDI AÑEJO",
+            "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/bacardi9450.jpg",
+            "price":4990,
+            "discount":0,
+            "category":3
+        },
     ...
-]
+    ]
+}
 ```
 
 ### GET Buscar producto
 
-- ```/product/search/:input``` retornará los productos que coincidan (puede ser parcialmente) con el ```input```
+- ```/product/search/:input/:page``` retornará los productos que coincidan (puede ser parcialmente) con el ```input```
+
+Si el campo *page* se deja vacio mostrara la primera pagina de resultados.
 
 **Parametros**
 - *input*: término de búsqueda
+- *page*: Numero de la pagina de resultados (opcional)
 
 **Ejemplo**
-
+- ```/product/search/r/2```
 - ```/product/search/a```
 
 **Respuesta**
 
 ```json
-[
-    {
-        "id":104,
-        "name":"ABSOLUT",
-        "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/absolut21381.png",
-        "price":8990,
-        "discount":30,
-        "category":7
-    }
-]
+{
+    pagination: {
+        totalOfItems: 1,
+        limitPerPage: 10,
+        currentPage: 1,
+        numberOfPages: 1
+    },
+    products:[
+        {
+            "id":104,
+            "name":"ABSOLUT",
+            "url_image":"https://dojiw2m9tvv09.cloudfront.net/11132/product/absolut21381.png",
+            "price":8990,
+            "discount":30,
+            "category":7
+        }
+    ]
+}
 ```
 ## Licencia
 
