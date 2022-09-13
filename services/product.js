@@ -2,6 +2,12 @@ const config = require('../config')
 const { getOffset } = require('../helper')
 const db = require('./db')
 
+/**
+ * Función encargada de consultar la lista 
+ * completa de los productos
+ * @param {int} page - Pagina de los resultados obtenidos
+ * @returns {Object} - Objeto con la paginación y los productos resultantes
+ */
 const getAllProduct = async (page = 1) => {
     const offset = getOffset(page, config.limitPerPage)
     const products = await db.query(`
@@ -18,6 +24,13 @@ const getAllProduct = async (page = 1) => {
     return { pagination, products }
 }
 
+/**
+ * Función encargada de consultar todos los productos
+ * de una sola categoria
+ * @param {int} id - Identificador unico de una categorias
+ * @param {int} page - Pagina de los resultados
+ * @returns {Object} - Objeto con la paginación y los productos resultantes
+ */
 const getProductByCategory = async (id, page = 1) => {
     const offset = getOffset(page, config.limitPerPage)
     const products = await db.query(`
@@ -36,13 +49,23 @@ const getProductByCategory = async (id, page = 1) => {
     return { pagination, products }
 }
 
+/**
+ * Función encargada de consultar los productos
+ * cuyo nombre tenga alguna coincidencia con el termino de busqueda
+ * @param {string} input  - Termino de busqueda
+ * @param {int} page - Pagina de los resultados
+ * @returns {Object} - Objeto con la paginación y los productos resultantes
+ */
 const searchProduct = async (input, page = 1) => {
     const offset = getOffset(page, config.limitPerPage)
     let words = input.split(' ')
     let products
     let pagination
 
+    //Si el termino de busqueda esta compuesto por más de una palabra
     if (words.length > 1) {
+        //Consultara los productos coincidan tanto atras como adelante
+        //del termino del busqueda
         products = await db.query(`
             SELECT *
             FROM product 
@@ -55,7 +78,8 @@ const searchProduct = async (input, page = 1) => {
             FROM product 
             WHERE name like '%${input}%'
         `, page)
-    } else {
+    } else {//Si el termino de busqueda es de una sola palabra
+        //Consultara los productos que tengan una coincidencia delantera
         products = await db.query(`
             SELECT *
             FROM product 
@@ -73,6 +97,13 @@ const searchProduct = async (input, page = 1) => {
     return { pagination, products }
 }
 
+/**
+ * Funcion encargada de obtener la información necesaria
+ * para la paginación de los resultados
+ * @param {string} query - Expresion SQL
+ * @param {int} currentPage - Pagina de resultados
+ * @returns {Object} - Información de paginación
+ */
 const getPagination = async (query, currentPage) => {
     const [{ totalOfItems }] = await db.query(query)
     const numberOfPages = Math.ceil(totalOfItems / config.limitPerPage)

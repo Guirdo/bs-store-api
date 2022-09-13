@@ -2,7 +2,9 @@ const express = require('express')
 const router = express.Router()
 const product = require('../services/product')
 
-/* GET All products  */
+/**
+ * GET Obtiene la lista completa de productos disponibles
+ */
 router.get('/:page?', async(req,res,next) => {
     try{
         res.status(200).json(await product.getAllProduct(req.params.page))
@@ -15,7 +17,9 @@ router.get('/:page?', async(req,res,next) => {
     }
 })
 
-/** GET Products by category */
+/**
+ * GET Obtiene productos que sean de cierta categoria 
+ */
 router.get('/category/:category/:page?', async(req,res,next) => {
     try{
         res.status(200).json(await product.getProductByCategory(req.params.category, req.params.page))
@@ -28,7 +32,9 @@ router.get('/category/:category/:page?', async(req,res,next) => {
     }
 })
 
-/* GET Search product */
+/**
+ *  GET Busca un producto a partir de un termino de busqueda
+ * */ 
 router.get('/search/:input/:page?', async(req,res,next) => {
     try{
         res.status(200).json(await product.searchProduct(req.params.input, req.params.page))
